@@ -29,6 +29,7 @@ public class Ej4 {
         System.out.println("Perimeter: " + rect.calculatePerimeter());
         System.out.println("Area: " + rect.calculateArea());
 
+        scan.close();
     }
 }
 /*
