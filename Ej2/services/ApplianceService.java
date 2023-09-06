@@ -87,7 +87,7 @@ public abstract class ApplianceService {
      * Update the Appliance price using the current pricing rules (Pricing by consumption, pricing by weight).
      * @param app   The appliance that is going to get it's price updated.
      */
-    protected void finalPrice(Appliance app) {
+    public void finalPrice(Appliance app) {
         updatePriceByConsumption(app);
         updatePriceByWeight(app);
     }
@@ -97,24 +97,25 @@ public abstract class ApplianceService {
      * @param app   The appliance that is going to get it's price updated.
      */
     private void updatePriceByConsumption(Appliance app) {
+        double price = app.getPrice();
         switch (app.getConsumption().toString()) {
             case "A":
-                app.setPrice(BASE_PRICE + 1_000);
+                app.setPrice(price + 1_000);
                 break;
             case "B":
-                app.setPrice(BASE_PRICE + 800);
+                app.setPrice(price + 800);
                 break;
             case "C":
-                app.setPrice(BASE_PRICE + 600);
+                app.setPrice(price + 600);
                 break;
             case "D":
-                app.setPrice(BASE_PRICE + 500);
+                app.setPrice(price + 500);
                 break;
             case "E":
-                app.setPrice(BASE_PRICE + 300);
+                app.setPrice(price + 300);
                 break;
             case "F":
-                app.setPrice(BASE_PRICE + 100);
+                app.setPrice(price + 100);
                 break;
             default: System.out.println("Invalid consumption.");
         }
