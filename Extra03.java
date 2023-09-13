@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 import Extra03.entities.Accomodation;
 import Extra03.entities.Camping;
@@ -7,6 +8,7 @@ import Extra03.entities.HotelFiveStars;
 import Extra03.entities.HotelFourStars;
 import Extra03.entities.Residency;
 import Extra03.enums.Gym;
+import Extra03.utilities.HotelFourStarsComparator;
 
 import static Extra03.constants.MainConstants.*;
 
@@ -29,7 +31,7 @@ public class Extra03 {
                     showAccomodations(accomodations);
                     break;
                 case 2:
-                    System.out.println("Showing registered Hotels: ");
+                    System.out.println("Showing registered Hotels (from most expensive to cheapest): ");
                     showHotels(accomodations);
                     break;
                 case 3:
@@ -119,10 +121,24 @@ public class Extra03 {
      * @param accomodations (ArrayList used to store every accomodation.)
      */
     public static void showHotels(ArrayList<Accomodation> accomodations) {
-        for (Accomodation accomodation : accomodations) {
-            if (accomodation instanceof HotelFiveStars || accomodation instanceof HotelFourStars)
-                System.out.println(accomodation);
+        TreeSet<HotelFourStars> hotels = getHotels(accomodations);
+        if (hotels.size() > 0) {
+            for (HotelFourStars hotel : hotels) {
+                System.out.println(hotel);
+            }
+        } else {
+            System.out.println("Sorry! There are no hotels registered in our catalogue.");
         }
+    }
+
+    private static TreeSet<HotelFourStars> getHotels(ArrayList<Accomodation> accomodations) {
+        TreeSet<HotelFourStars> hotels = new TreeSet<>(HotelFourStarsComparator.compareByPrice);
+        
+        for (Accomodation accomodation : accomodations) {
+            if (accomodation instanceof HotelFourStars)
+                hotels.add((HotelFourStars) accomodation);   
+        }
+        return hotels;
     }
 
     /**
