@@ -3,6 +3,9 @@ package Extra03.entities;
 import Extra03.enums.Gym;
 import static Extra03.constants.HotelConstants.*;
 
+/**
+ * Class to instantiate the first type of hotels available in these project. Extends Accomodation class.
+ */
 public class HotelFourStars extends Accomodation{
     private int rooms;
     private int beds;
@@ -81,6 +84,10 @@ public class HotelFourStars extends Accomodation{
     }
 
 
+    /**
+     * Calculates the extra price of the Hotel calling the method, according to the specifications of the restaurant it has.
+     * @return  The extra price to be added to the room's price, according to the inhouse restaurant's characteristics.
+     */
     private double bonusForRestaurant() {
         if (this.restaurantCapacity <= RESUTARANT_C_MAX_CAPACITY)
             return PRICE_RESTAURANT_C;
@@ -89,15 +96,27 @@ public class HotelFourStars extends Accomodation{
         return PRICE_RESTAURANT_B;
     }
 
+    /**
+     * Calculates the extra price of the Hotel calling the method, according to the specifications of the gym it has.
+     * @return  The extra price to be added to the room's price, according to the inhouse gym's characteristics.
+     */
     private double bonusForGym() {
         return Gym.A.equals(this.gym) ? PRICE_GYM_A : PRICE_GYM_B;
     }
 
+    /**
+     * Calculates the total price of the Hotel calling the method, according to it's facilities.
+     * @return  The total price of the Hotel's room, according to the Hotel facilites.
+     */
     public double calculatePrice() {
         return (PRICE_ROOM + calculateHotelCapacity() + bonusForRestaurant() + bonusForGym());
     }
 
-    public int calculateHotelCapacity() {
+    /**
+     * Calculates the hotel capacity considering it's rooms, floors and beds.
+     * @return amount of beds available inside the hotel.
+     */
+    private int calculateHotelCapacity() {
         return this.getBeds() * this.getFloors() * this.getRooms();
     }
 

@@ -3,7 +3,9 @@ package Extra03.entities;
 import Extra03.enums.Gym;
 import static Extra03.constants.HotelConstants.*;
 
-
+/**
+ * Class to instantiate the FiveStars Hotels. Extends HotelFourStars class.
+ */
 public class HotelFiveStars extends HotelFourStars {
     private int conferenceRooms;
     private int suitRooms;
@@ -41,6 +43,11 @@ public class HotelFiveStars extends HotelFourStars {
         this.limousines = limousines;
     }
 
+
+    /**
+     * Calculates the extra price of the Hotel calling the method, according to the amount of limousines it has.
+     * @return  The extra price to be added to the room's price, according to the amounts of limousines available to guests.
+     */
     private double bonusForLimousine() {
         return this.limousines * PRICE_LIMO;
     }

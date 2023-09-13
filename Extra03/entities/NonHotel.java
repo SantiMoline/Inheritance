@@ -1,5 +1,8 @@
 package Extra03.entities;
 
+/**
+ * Abstract class to agroup the different types on Non Hotel accomodations. Extends Accomodation Class.
+ */
 public abstract class NonHotel extends Accomodation {
     private boolean isPrivate;
     private double surfaceArea;

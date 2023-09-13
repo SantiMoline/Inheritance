@@ -1,5 +1,7 @@
 package Extra03.entities;
-
+/**
+ * Class to instantiate Residencies. Extends NonHotel class.
+ */
 public class Residency extends NonHotel {
     private int rooms;
     private boolean discounts;

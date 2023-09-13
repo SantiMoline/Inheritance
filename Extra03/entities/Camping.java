@@ -1,5 +1,8 @@
 package Extra03.entities;
 
+/**
+ * Class to instantiate Camping. Extends NonHotel class.
+ */
 public class Camping extends NonHotel {
     private int maxTents;
     private int bathrooms;

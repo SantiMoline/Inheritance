@@ -1,6 +1,9 @@
 package Extra03.entities;
 
-public class Accomodation {
+/**
+ * Abstract class to agroup the differents types of available accomodations.
+ */
+public abstract class Accomodation {
     private String name;
     private String address;
     private String city;

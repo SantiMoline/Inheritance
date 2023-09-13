@@ -1,5 +1,8 @@
 package Extra03.constants;
 
+/**
+ * Class to store the differents constants related to HotelFiveStars and HotelFourStars.
+ */
 public class HotelConstants {
     public static final double PRICE_RESTAURANT_C = 10;
     public static final double PRICE_RESTAURANT_B = 30;

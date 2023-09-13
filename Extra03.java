@@ -8,7 +8,7 @@ import Extra03.entities.HotelFourStars;
 import Extra03.entities.Residency;
 import Extra03.enums.Gym;
 
-
+import static Extra03.constants.MainConstants.*;
 
 
 public class Extra03 {
@@ -41,12 +41,17 @@ public class Extra03 {
                     showResidenciesWithDiscounts(accomodations);
                     break;
                 case 5:
+                    System.out.println("Hope you could find what you were looking for. Until next time!");
                     active = false;
                     break;
             }
         }
     }
 
+    /**
+     * Fills the array with different accomodations. Using HotelFourStars, HotelFiveStars, Residency & Camping classes.
+     * @param accomodations     (ArrayList used in Main to store the different accomodation.)
+     */
     public static void fillArray(ArrayList<Accomodation> accomodations) {
         accomodations.add(new HotelFourStars("Four Stars", "Las Heras 2020", "CABA", "Rodolfo", 20, 50, 10, 45.5, Gym.A, "El de Donato", 55)); 
         accomodations.add(new HotelFourStars("Four Stars", "Av. Rivadavia 1010", "CABA", "Juan", 12, 24, 5, 25.7, Gym.B, "Burguer King", 32)); 
@@ -60,8 +65,11 @@ public class Extra03 {
         accomodations.add(new Camping("Discovery Camping", "Ruta Nº 12 KM 159,5", "San Martín de los Andes", "Santiago", true, 2250, 105, 10, true));
     }
 
+    /**
+     * Prints in console the menu with the available options.
+     */
     public static void showMenu() {
-        System.out.println("What would you like to do? ");
+        System.out.println("\n\n\tWhat would you like to do? ");
         System.out.println("1. Show all the available Accomodations.");
         System.out.println("2. Show all Hotels.");
         System.out.println("3. Show every Camping with restaurant.");
@@ -69,12 +77,21 @@ public class Extra03 {
         System.out.println("5. Exit.");
     }
 
+    /**
+     * Prints every Accomodation stored in the ArrayList.
+     * @param accomodations (ArrayList used to store every accomodation.)
+     */
     public static void showAccomodations(ArrayList<Accomodation> accomodations) {
         for (Accomodation accomodation : accomodations) {
             System.out.println(accomodation);
         }
     }
 
+    /**
+     * Asks the user for an int input and checks if it's valid. In case it's not, asks again until the user choose a valid int.
+     * @param scan  Scanner to read input.
+     * @return      A valid int that corresponds with an available option in the menu.
+     */
     public static int promptForOption(Scanner scan) {
         while (true) {
             if (!scan.hasNextInt()) {
@@ -88,10 +105,19 @@ public class Extra03 {
         }
     }
 
+    /**
+     * Checks if an int is between the 
+     * @param opc
+     * @return
+     */
     public static boolean isInvalidOption(int opc) {
-        return (opc < 1 || opc > 5);
+        return (opc < MIN_OPTION || opc > MAX_OPTION);
     }
 
+    /**
+     * Shows every registered hotel.
+     * @param accomodations (ArrayList used to store every accomodation.)
+     */
     public static void showHotels(ArrayList<Accomodation> accomodations) {
         for (Accomodation accomodation : accomodations) {
             if (accomodation instanceof HotelFiveStars || accomodation instanceof HotelFourStars)
@@ -99,6 +125,10 @@ public class Extra03 {
         }
     }
 
+    /**
+     * Shows every Camping with restaurant inside the facility.
+     * @param accomodations (ArrayList used to store every accomodation.)
+     */
     public static void showCampingsWithRestaurants(ArrayList<Accomodation> accomodations) {
         for (Accomodation accomodation : accomodations) {
             if (accomodation instanceof Camping) {
@@ -110,6 +140,10 @@ public class Extra03 {
         }
     }
 
+    /**
+     * Shows every Residency with available discounts.
+     * @param accomodations (ArrayList used to store every accomodation.)
+     */
     public static void showResidenciesWithDiscounts(ArrayList<Accomodation> accomodations) {
         for (Accomodation accomodation : accomodations) {
             if (accomodation instanceof Residency) {
@@ -119,13 +153,5 @@ public class Extra03 {
             }
         }
     }
-
-
-
-
-
-
-
-
 
 }
